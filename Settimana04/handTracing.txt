@@ -1,0 +1,6 @@
+Iter.   i   saldo   saldo<20000
+        0   10000   True -> entriamo nel ciclo
+1       0   10500   True -> vado alla prossima iterazione
+2       1   ....    True
+..      ..  ...     True
+15      14  20789.2 False -> esco dal ciclo 
