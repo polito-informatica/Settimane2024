@@ -105,8 +105,8 @@ conta30 = voti.count(30)+voti.count(31)
 
 print(voti)
 
-# voti_fake = list(voti)
-voti_fake = voti
+voti_fake = list(voti)
+# voti_fake = voti #  NOOOO, crea un alias e non una copia
 
 for i in range(len(voti_fake)):
     voti_fake[i] = voti_fake[i]+1
@@ -114,8 +114,17 @@ for i in range(len(voti_fake)):
 print("migliorati", voti_fake)
 print("originali", voti)
 
+
+voti_fake2 = []   # voti_fake2 = list()
+for voto in voti:
+    voti_fake2.append(voto+1)
+
+
+voti_fake3 = [voti]  # NOO, crea una nuova lista con 1 solo elemento che è un alias alla lista precedente
+
 # Riguardo ai punteggi di Bagnaia, calcolare la somma e la media delle gare
 # Ripetere i calcoli considerando solo i punteggi maggiori o uguali a 20.
+# Cancellare dalla lista tutti gli elementi con punteggio minore di 20
 
 # Visualizzare in ordine alfabetico tutti i personaggi delle TMNT
 
