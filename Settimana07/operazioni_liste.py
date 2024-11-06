@@ -123,8 +123,80 @@ for voto in voti:
 voti_fake3 = [voti]  # NOO, crea una nuova lista con 1 solo elemento che è un alias alla lista precedente
 
 # Riguardo ai punteggi di Bagnaia, calcolare la somma e la media delle gare
+
+somma_punti = 0
+for punto in punti:
+    somma_punti = somma_punti + punto
+
+somma_punti = sum(punti)
+media_punti = sum(punti) / len(punti)
+
+print(f'Il punteggio totale vale {somma_punti} e media vale {media_punti}')
+
 # Ripetere i calcoli considerando solo i punteggi maggiori o uguali a 20.
+
+somma20 = 0
+conta20 = 0
+for punto in punti:
+    if punto>=20:
+        somma20 = somma20 + punto
+        conta20 = conta20 + 1
+
+print(f'Il punteggio delle gare con più di 20 punti vale {somma20} e media vale {somma20/conta20:.2f}')
+
+
 # Cancellare dalla lista tutti gli elementi con punteggio minore di 20
+
+print(punti)
+
+# i=0
+# while i<len(punti):
+#     punto = punti[i]
+#     if punto<20:
+#         punti.pop(i)
+#         continue
+
+#     i = i + 1
+
+# i = len(punti)-1
+# while i>=0:
+#     if punti[i]<20:
+#         punti.pop(i)
+#     i = i - 1
+
+# for i in range(len(punti)-1, -1, -1): # indici 19, 18, 17, .... 2, 1, 0
+#     if punti[i]<20:
+#         punti.pop(i)
+
+
+punti_nuovi = []
+for punto in punti:
+    if punto>=20:
+        punti_nuovi.append(punto)
+punti = punti_nuovi
+
+punti_nuovi = [ p for p in punti if p>=20  ]
+# list comprehension
+
+voti_nuovi = [ voto+1 for voto in voti if voto<24 ]
+
+print(punti)
+
 
 # Visualizzare in ordine alfabetico tutti i personaggi delle TMNT
 
+# costriusco una lista che contenga SIA le tartarughe SIA gli alleati
+# -> concatenazione di liste
+
+personaggi = tartarughe + alleati_tartarughe
+
+# personaggi = [ tartarughe, alleati_tartarughe ]   NOO
+
+print(personaggi)
+personaggi.sort()
+print(personaggi)
+
+# tartarughe.append(alleati_tartarughe) NO
+tartarughe.extend(alleati_tartarughe)
+
+print(tartarughe)
