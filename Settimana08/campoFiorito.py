@@ -1,11 +1,31 @@
 """
-Gioco del campo fiorito
+Consideriamo il gioco del Campo Fiorito,
+in cui in una griglia quadrata di NxN caselle di prato sono presenti M fiori.
+
+🐝 Chi gioca deve scoprire tutte le caselle che contengono fiori,
+evitando di perdere tempo esplorando quelle che invece contengono solo una zolla d'erba.
+
+Il programma deve innanzitutto creare una matrice NxN e posizionare
+gli M fiori in posizioni casuali (distinte tra loro).
+I fiori possono essere rappresentati da un valore Booleano True/False.
+
+In seguito, il programma calcoli una matrice NxN di numeri interi,
+in cui ciascuna cella contenga il numero di fiori presenti
+nelle 8 celle adiacenti (se esistono).
+Si stampi il contenuto di queste due matrici,
+per verificare la correttezza dei calcoli.
+
+Si permetta poi all'utente di selezionare una casella
+(inserendone le coordinate di riga e colonna).
+In funzione del contenuto di tale casella, sono possibili i 
+seguenti tre casi:
+- casella già selezionata in precedenza: si stampi un messaggio di errore
+- casella contenente una zolla d'erba: si stampi un messaggio di sconfitta, e il numero di fiori nelle caselle adiacenti
+- casella contenente un fiore: si stampi il numero di fiori trovati fino a quel momento
+
+Esempio:
+🟢🟢🟢🟢  1110
+🟢🌸🟢🟢  2121
+🌸🟢🟢🌸  1331
+🟢🟢🌸🟢  1212
 """
-tab=[[1,2,3],[7,8,9]]
-
-tab1 = list(tab)
-
-tab1[0][0]=5
-
-for riga in tab:
-    print(riga)
