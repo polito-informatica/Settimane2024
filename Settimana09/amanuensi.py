@@ -1,25 +1,79 @@
 """
 Amanuensi 🖋️
 
-In un recondito monastero, gli e e le amanuensi hanno il compito di custodire la conoscenza sottoforma di manoscritti cartacei, ricopiando a mano
-noti testi letterari da varie fonti. 
-Questi sono raccolti in libri organizzati per tema, che devono essere custoditi inalterati. Ma il monastero incoraggia anche a prendere spunto
-dai testi, per poi modificarli e crearne di nuovi. Inoltre, è importante crearne delle copie da spedire ai monasteri di tutto il mondo, 
-per quanto più diffonderne gli importanti contenuti culturali.
+In un recondito monastero, gli e e le amanuensi hanno il compito di custodire la conoscenza sottoforma di manoscritti cartacei, ricopiando a mano noti testi letterari da varie fonti. 
+Questi sono raccolti in libri organizzati per tema, che devono essere custoditi inalterati.
+Ma il monastero incoraggia anche a prendere spunto dai testi, per poi modificarli e crearne di nuovi.
+Inoltre, è importante crearne delle copie da spedire ai monasteri di tutto il mondo, per quanto più diffonderne gli importanti contenuti culturali.
 
-Creare un programma che permetta di 
-- organizzare i testi all'interno di libri tematici 
-- analizzare i libri per numero di manoscritti, di righe e di caratteri che contengono
-- creare nuove versioni dei manoscritti, garantendo che i libri originali restino inalterati
-- creare copie degli originali da mandare ad altri monasteri
-
+Creare un programma che permetta di:
+- organizzare i testi all'interno di libri tematici, dove i testi siano accessibili riga per riga
+- analizzare i libri, elaborando il numero di manoscritti, di righe e di caratteri che contengono
+- creare nuove versioni modificate dei manoscritti, garantendo che i libri originali restino inalterati
+- creare copie dei libri da mandare ad altri monasteri, garantendo che i libri originali restino inalterati
 """
+
+import copy
+
+# Definizione delle funzioni 
+
+def crea_libro(lista):
+    # Organizza i manoscritti in un libro tematico, rendendo ogni testo accessibile riga per riga
+    libro_elaborato = []
+    for manoscritto in lista:
+        # Divide il manoscritto in una lista di righe
+        manoscritto_elaborato = manoscritto.split("\n")
+        libro_elaborato.append(manoscritto_elaborato)
+    return libro_elaborato
+
+def analisi_libro(qualunque_libro):
+    # Analizza il libro calcolando il numero di manoscritti, righe e caratteri
+    n_manoscritti = len(qualunque_libro)
+    n_righe = 0
+    n_caratteri = 0
+    for manoscritto in qualunque_libro:
+        n_righe += len(manoscritto)
+        for riga in manoscritto:
+            n_caratteri += len(riga)
+    print(f"Il libro contiene {n_manoscritti} manoscritti, {n_righe} righe e {n_caratteri} caratteri.")
+    return n_manoscritti, n_righe, n_caratteri
+
+def modifica_manoscritto(manoscritto, operazione):
+    # Crea una nuova versione modificata del manoscritto senza alterare l'originale
+    if operazione == "A":
+        # Aggiunge una riga finale al manoscritto
+        nuovo = aggiungi_finale(manoscritto)
+    elif operazione == "R":
+        # Rimuove la prima riga del manoscritto
+        nuovo = rimuovi_inizio(manoscritto)
+    return nuovo
+
+def aggiungi_finale(manoscritto):
+    # Aggiunge "THE END!" alla fine del manoscritto
+    nuova_versione = manoscritto[:]
+    nuova_versione.append("THE END!")
+    return nuova_versione
+
+def rimuovi_inizio(manoscritto):
+    # Rimuove la prima riga del manoscritto
+    nuova_versione = manoscritto[:]
+    if nuova_versione:
+        nuova_versione.pop(0)
+    return nuova_versione
+
+def crea_copia_libro(libro):
+    # Crea una copia profonda del libro per garantire che l'originale resti inalterato
+    #nuovo_libro = list(libro) # Creerebbe una copia superficiale (shallow copy) del libro
+    nuovo_libro = copy.deepcopy(libro)
+    return nuovo_libro
+
+
+
+
+# Definizione dei manoscritti (testi letterari)
 
 
 # Alla Sera - Foscolo
-import copy
-
-
 manoscritto1 = """Forse perché della fatal quiete
 Tu sei l’immago a me sì cara, vieni,
 O Sera! E quando ti corteggian liete
@@ -118,3 +172,54 @@ I rise."""
 # Odi et amo - Catullo
 manoscritto4 = """Odi et amo. Quare id faciam fortasse requiris.
 Nescio, sed fieri sentio, et excrucior."""
+
+# Lista dei manoscritti da includere nel libro
+lista_manoscritti = [manoscritto1, manoscritto2, manoscritto3, manoscritto4]
+
+# Creazione del libro tematico di poesie
+print("Creazione del libro di poesie...")
+libro_poesia = crea_libro(lista_manoscritti)
+print("Libro di poesie creato.\n")
+
+# Analisi del libro originale
+analisi_libro(libro_poesia)
+
+# Creazione di una nuova versione modificata di un manoscritto
+print("Creazione di una nuova versione modificata del quarto manoscritto (aggiunta di una riga finale)...")
+nuovo_manoscritto = aggiungi_finale(libro_poesia[3])
+print("Nuova versione del manoscritto creata.\n")
+
+# Verifica che il libro originale sia rimasto inalterato
+print("Verifica che il libro originale sia inalterato dopo la modifica...")
+analisi_libro(libro_poesia)
+
+# Creazione di una copia del libro per inviarla ad altri monasteri
+copia_libro = crea_copia_libro(libro_poesia)
+# Modifica della copia aggiungendo una nota al primo manoscritto
+print("Aggiunta di una nota al primo manoscritto nella copia del libro...")
+copia_libro[0].append("nota a margine")
+print("Nota aggiunta alla copia del libro.\n")
+
+# Verifica che il libro originale sia rimasto inalterato dopo la modifica della copia
+print("Verifica che il libro originale sia inalterato dopo la modifica della copia...")
+analisi_libro(libro_poesia)
+
+# Creazione di altre versioni modificate dei manoscritti
+print("Creazione di nuove versioni modificate del primo manoscritto...")
+nuovo_manoscritto2 = aggiungi_finale(libro_poesia[0])
+nuovo_manoscritto3 = rimuovi_inizio(libro_poesia[0])
+print("Nuove versioni del manoscritto create.\n")
+
+# Verifica finale del libro originale
+print("Analisi finale del libro originale per confermare che è inalterato...")
+analisi_libro(libro_poesia)
+
+# Modifica di un manoscritto utilizzando la funzione generale
+print("Modifica del quarto manoscritto utilizzando la funzione 'modifica_manoscritto' con operazione 'R'...")
+manoscritto_modificato = modifica_manoscritto(libro_poesia[3], "R")
+
+# Stampa del manoscritto modificato
+print("Manoscritto modificato:")
+for riga in manoscritto_modificato:
+    print(riga)
+
