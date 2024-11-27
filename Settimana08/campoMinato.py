@@ -1,3 +1,0 @@
-"""
-Gioco del campo minato
-"""
