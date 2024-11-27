@@ -26,3 +26,26 @@ Si scriva un frammento di codice Python che, data una situazione di partenza rap
 
 altezze = [0, 1, 0, 2, 0, 3, 3, 2, 2, 0]
 pezzo = 2
+
+# trovare se ci sono 'pezzo' celle consecutive di 'altezze' il cui valore sia uguale
+# cerchiamo sequenze partendo da diversi indici 'ip' di partenza.
+
+for ip in range(len(altezze)-(pezzo-1)):
+    # la sequenza di celle dall'indice ip all'indice (ip+pezzo-1) ha tutti valori uguali?
+    uguali = True
+    for s in range(1, pezzo):
+        if altezze[ip] != altezze[ip+s]:
+            uguali = False
+
+    # scorciatoia
+    # if altezze[ip:ip+pezzo] == [ altezze[ip] ] * pezzo:
+
+    # la variabile 'uguali' mi dice se il pezzo si può mettere
+    if uguali:
+        print(f'pezzo in posizione {ip}')
+        for s in range(0, pezzo):
+            altezze[ip+s] = altezze[ip+s]+1
+        break # esce dal ciclo 'for ip'
+    
+print(altezze)
+

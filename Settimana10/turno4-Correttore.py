@@ -22,5 +22,22 @@ Invece, la parola 'sotto' è indicata come errata ma priva di correzione, perch�
 dizionario = ['casa', 'cane', 'gatto', 'topo', 'mela', 'pera', 
               'uva', 'ciccia', 'cicoria', 'cicogna', 'ciclamino']
 
-parola = 'sotto'
+parola = 'getto'
+
+if parola in dizionario:
+    print('parola presente')
+else:
+    for diz in dizionario:
+        # mi chiedo se 'diz' è simile a 'parola'
+        # ha la stessa lunghezza
+        # n-1 lettere uguali ed 1 diversa
+
+        if len(diz)==len(parola):
+            # conto le lettere di differenza
+            c = 0
+            for i in range(len(parola)):
+                if parola[i]!=diz[i]:
+                    c = c + 1
+            if c==1:
+                print(f'{parola} è simile a {diz}')
 

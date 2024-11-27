@@ -23,3 +23,25 @@ Nel caso di esempio, si stampi (non è importante l'ordine in cui vengono stampa
 """
 
 zeri = [-84.71, -17.58, 6.85, 1.34, -91.5, 78.47, -62.66, -6.13]
+
+# prendo uno per uno i numeri
+for zero in zeri:
+    # quali sono i numeri minori, e prendo il max
+    minori = []
+    for z in zeri:
+        if z<zero:
+            minori.append(z)
+
+    # quali sono i numeri maggiori, e prendo il min
+    maggiori = []
+    for z in zeri:
+        if z>zero:
+            maggiori.append(z)
+
+    if len(minori)!=0 and len(maggiori)!=0:
+        print(f'{zero} è compreso tra {max(minori)} e {min(maggiori)}')
+
+### 
+zeri.sort()
+for i in range(1, len(zeri)-1):
+    print(f'{zeri[i]} è compreso tra {zeri[i-1]} e {zeri[i+1]}')
