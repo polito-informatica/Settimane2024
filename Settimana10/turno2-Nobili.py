@@ -18,3 +18,23 @@ Si scriva un frammento di codice Python che, partendo dalla lista 'avi', calcoli
 """
 
 avi = ["Giovanni", "Maria", "Luigi", "Anna", "Paolo", "Giulia", "Carlo", "Rosa"]
+
+VOCALI = 'aeiou'
+
+# considero tutte le coppie di nomi possibili
+for primo in avi:
+    for secondo in avi:
+        primo = primo.lower()
+        secondo = secondo.lower()
+
+        if primo[-1] in VOCALI:
+            primo = primo[:-1]
+        
+        if len(primo)>=2 and primo[-1] not in VOCALI and primo[-2] not in VOCALI:
+            primo = primo[:-1]
+
+        nome = primo+secondo
+        nome = nome[0].upper() + nome[1:]
+
+        if len(nome)<=10:
+            print(nome)

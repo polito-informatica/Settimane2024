@@ -30,3 +30,39 @@ targhe = [
     "AB123",
     "AB888EE",
 ]
+
+valide = []
+targhe_valide = []
+
+for targa in targhe:
+    if len(targa)==7:
+        if (targa[0:2].isalpha() and targa[0:2].isupper() and
+            targa[-2:].isalpha() and targa[-2:].isupper() and
+            targa[2:5].isdigit() ) :
+            if ('O' not in targa and 'I' not in targa 
+                and 'Q' not in targa and targa[0:2]!='EE'):
+                valide.append(True)
+                targhe_valide.append(targa)
+            else:
+                valide.append(False)
+        else:
+            valide.append(False)
+    else:
+        valide.append(False)
+
+print(valide)
+print(targhe_valide)
+
+# alternativa, usando un flag anziché una catena di 'else'
+
+for targa in targhe:
+    ok = False
+    if len(targa)==7:
+        if (targa[0:2].isalpha() and targa[0:2].isupper() and
+            targa[-2:].isalpha() and targa[-2:].isupper() and
+            targa[2:5].isdigit() ) :
+            if ('O' not in targa and 'I' not in targa 
+                and 'Q' not in targa and targa[0:2]!='EE'):
+                ok = True
+                targhe_valide.append(targa)
+    valide.append(ok)
