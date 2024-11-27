@@ -1,10 +1,4 @@
 
-
-Thought per 6 secondi
-Esatto, hai ragione! Quando utilizziamo line.rstrip(), rimuoviamo i caratteri di spazio bianco alla fine della stringa, in particolare il carattere di nuova linea \n. Ecco il codice aggiornato con i commenti che riflettono questa informazione:
-
-python
-Copia codice
 # Apri il file "datiNumerici.txt" in modalità lettura con codifica UTF-8
 infile = open("datiNumerici.txt", "r", encoding="UTF-8")
 
