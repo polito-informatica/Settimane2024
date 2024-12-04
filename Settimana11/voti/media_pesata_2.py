@@ -27,13 +27,23 @@ def leggi_voti(nome_file):
     f = open(nome_file, 'r', encoding='utf-8')
     for riga in f:
         campi = riga.split()
-        voti.append( 
-            [
-                campi[0],
-                int(campi[1]),
-                int(campi[2])
-            ]
-        )
+        try:
+            voti.append( 
+                [
+                    campi[0],
+                    int(campi[1]),
+                    int(campi[2])
+                ]
+            )
+        except ValueError:
+            print("I seguenti dati non sono rappresentati come numeri interi")
+            print(riga)
+            exit()
+        except IndexError:
+            print("La seguente riga non ha il numero sufficiente di campi")
+            print(riga)
+            exit()
+
 
         # voti.append(campi) # solo se tutti i campi fossero stringhe
     f.close()

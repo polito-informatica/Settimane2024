@@ -1,5 +1,5 @@
-Informatica 8 30
+Informatica 8 
 Analisi 10 25
-Chimica 8 28
+Chimica G8 28
 Fisica 10 21
 Geometria 10 24
