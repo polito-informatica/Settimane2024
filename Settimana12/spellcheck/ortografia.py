@@ -30,8 +30,12 @@ def leggi_parole(nome_file):
             
             
             if '-' in campo:
-                ...
-                ## TODO: se c'è uno o più trattini '-' '--', dividi il campo e ripeti la rimozione della punteggiatura
+                ## se c'è uno o più trattini '-' '--', dividi il campo e ripeti la rimozione della punteggiatura
+                frammenti = campo.split('-')
+                for frammento in frammenti:
+                    p = frammento.lower().strip(string.punctuation) 
+                    if p: # non aggiungere parole vuote ''
+                        parole.add( p )
             else:
                 p = campo.lower().strip(string.punctuation) 
                 if p: # non aggiungere parole vuote ''
